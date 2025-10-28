@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Define platform detection properties -->
+    <IsWindows>$([MSBuild]::IsOSPlatform('Windows'))</IsWindows>
+    <IsOSX>$([MSBuild]::IsOSPlatform('OSX'))</IsOSX>
+    <IsLinux>$([MSBuild]::IsOSPlatform('Linux'))</IsLinux>
+
+    <!-- Set target framework based on platform -->
+    <TargetFramework Condition="$(IsWindows)">net8.0-windows</TargetFramework>
+    <TargetFramework Condition="!$(IsWindows)">net8.0</TargetFramework>
+
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <!-- Platform-specific MonoGame packages -->
+  <ItemGroup Condition="$(IsWindows)">
+    <PackageReference Include="MonoGame.Framework.WindowsDX" Version="3.8.4.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(IsOSX) OR $(IsLinux)">
+    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="xunit" Version="2.9.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+</Project>
