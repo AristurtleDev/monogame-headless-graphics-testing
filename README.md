@@ -1,4 +1,6 @@
-# MonoGame Headless Graphics Testing - Cross-Platform CI
+# MonoGame Headless Graphics Testing
+
+[![CI Graphics Testing Status](https://github.com/AristurtleDev/monogame-headless-graphics-testing/actions/workflows/test.yml/badge.svg)](https://github.com/AristurtleDev/monogame-headless-graphics-testing/actions/workflows/test.yml)
 
 ## Overview
 
